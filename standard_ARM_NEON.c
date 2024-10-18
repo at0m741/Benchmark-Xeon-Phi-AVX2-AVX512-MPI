@@ -4,7 +4,7 @@
 #include <omp.h>  
 
 #define N 4096
-#define BLOCK_SIZE 64  
+#define BLOCK_SIZE 128
 
 void mat_mult_blocked(float *A, float *B_transposed, float *C, int N) {
     int i, j, k, ii, jj, kk;
