@@ -3,7 +3,7 @@
 #include <arm_neon.h>  
 #include <omp.h>  
 
-#define N 1024   
+#define N 4096
 #define BLOCK_SIZE 64  
 
 void mat_mult_blocked(float *A, float *B_transposed, float *C, int N) {
