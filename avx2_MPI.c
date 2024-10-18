@@ -4,8 +4,8 @@
 #include <immintrin.h>
 #include <omp.h>
 
-#define N 1024
-#define BLOCK_SIZE 64
+#define N 4096
+#define BLOCK_SIZE 128
 
 void mat_mult_blocked(double *A_local, double *B_transposed, double *C_local, int n_local, int N_global) {
     int i, j, k, ii, jj, kk;
