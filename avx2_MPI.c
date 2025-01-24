@@ -23,12 +23,11 @@ static inline void mat_mult_blocked(double *A_local, double *B_transposed, doubl
                 for (i = ii; i < ii + BLOCK_SIZE && i < n_local; i++) {
                     _mm_prefetch((const char*)&A_local[(i + 1) * N_global + kk], _MM_HINT_T0);
                     for (j = jj; j < jj + BLOCK_SIZE && j < N_global; j++) {
-                        // Charger C_local existant AVANT d'accumuler
                         _mm256_storeu_pd(&C_local[i * N_global + j],
                             _mm256_fmadd_pd(
                                 _mm256_load_pd(&A_local[i * N_global + kk]),
                                 _mm256_load_pd(&B_transposed[j * N_global + kk]),
-                                _mm256_loadu_pd(&C_local[i * N_global + j]) // Charger C_local actuel
+                                _mm256_loadu_pd(&C_local[i * N_global + j])
                             )
                         );
                     }
